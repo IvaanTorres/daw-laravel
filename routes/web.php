@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//! Path root
 Route::get('/', function () {
     return view('welcome');
 });
+//! Path with params
+Route::get('saludo/{nombre}', function($nombre) {
+    return "Hola, " . $nombre;
+});
+//! Path with optional params
+Route::get('despedirse/{nombre?}', function($nombre = 'invitado') {
+    return "Adios, " . $nombre;
+})->where('nombre', '[A-Za-z]+'); //* If it doesn't match the param with the Regex, it shows a 404 error.
+//! Path with a name reference
+Route::get('contacto', function() {
+    return "Página de contacto";
+})->name('contact-path'); //* <a href="{{ route('ruta_contacto') }}">Contacto</a> --- It's not necessary an echo
+
+/* YOU CAN CONCAT SEVERAL FUNCTIONS */
