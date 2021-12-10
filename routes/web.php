@@ -39,3 +39,9 @@ Route::get('contacto', function() {
 
 //* How to render a view when you don't have much logic.
 Route::view('/about', 'about', ['name' => 'Nacho']);
+
+//! Path to view which list values with a foreach
+Route::get('/support/{id?}', function($id = 0) { //* Number params are set automatically
+    return view('support', ['id' => $id]);
+});
+
