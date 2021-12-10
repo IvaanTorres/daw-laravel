@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 //! Path root
 Route::get('/', function () {
-    return view('welcome');
+    $name = 'Iván';
+    //* Ways to render a view
+    //return view('home')->with('nombre', $name);
+    //return view('home')->with(['nombre' => $name]);
+    //return view('home', ['nombre' => $name]);
+    return view('home', compact('name')); //* It must have the same value (local & view variable)
 });
 //! Path with params
 Route::get('saludo/{nombre}', function($nombre) {
@@ -30,4 +35,7 @@ Route::get('contacto', function() {
     return "Página de contacto";
 })->name('contact-path'); //* <a href="{{ route('ruta_contacto') }}">Contacto</a> --- It's not necessary an echo
 
-/* YOU CAN CONCAT SEVERAL FUNCTIONS */
+/* IMPORTANT: YOU CAN CONCAT SEVERAL FUNCTIONS */
+
+//* How to render a view when you don't have much logic.
+Route::view('/about', 'about', ['name' => 'Nacho']);
