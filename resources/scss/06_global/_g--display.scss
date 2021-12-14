@@ -1,0 +1,17 @@
+@each $d-size, $d-value in $breakpoint-values {
+  @if #{$d-size} == '' {
+    @each $key in getDisplayKeys() {
+      .g--display-#{$key} {
+        display: (getDisplayValue($key));
+      }
+    }
+  } @else {
+    @media screen and (min-width: #{$d-value}) {
+      @each $key in getDisplayKeys() {
+        .g--display-#{$key}#{$d-size} {
+          display: (getDisplayValue($key));
+        }
+      }
+    }
+  }
+}

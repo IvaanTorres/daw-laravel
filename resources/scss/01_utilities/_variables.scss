@@ -1,0 +1,209 @@
+$font-family: sans-serif;
+
+$breakpoint-values: (
+    "": 0px,
+    \@+ "mobile": 640px,
+    \@+ "tablet": 768px,
+    \@+ "desktop": 1024px,
+);
+
+$padding-values: (
+    "xxs": 2px,
+    "xs": 5px,
+    "s": 10px,
+    "m": 15px,
+    "l": 30px,
+    "xl": 50px,
+    "xxl": 100px,
+);
+
+$margin-values: map-merge(
+    $padding-values,
+    (
+        "auto": auto,
+    )
+);
+
+$gap-values: (
+    "xxs": 1px,
+    "xs": 3px,
+    "s": 5px,
+    "m": 10px,
+    "l": 15px,
+    "xl": 20px,
+    "xxl": 25px,
+);
+
+$font-size-values: (
+    "4xs": 12px,
+    "3xs": 12px,
+    "2xs": 14px,
+    "xs": 16px,
+    "s": 18px,
+    "m": 20px,
+    "l": 24px,
+    "xl": 30px,
+    "2xl": 36px,
+    "3xl": 48px,
+    "4xl": 64px,
+);
+
+$color-values: (
+    "white": (
+        #ffffff,
+        #fcfcfc,
+        #fafafa,
+        #f7f7f7,
+        #f5f5f5,
+        #f2f2f2,
+        #f0f0f0,
+        #ededed,
+        #ebebeb,
+    ),
+    "grey": (
+        #f0f0f0,
+        #d9d9d9,
+        #c2c2c2,
+        #ababab,
+        #949494,
+        #7d7d7d,
+        #666666,
+        #4f4f4f,
+        #383838,
+    ),
+    "black": (
+        #000000,
+    ),
+    "red": (
+        #fff5f5,
+        #fed7d7,
+        #feb2b2,
+        #fc8181,
+        #f56565,
+        #e53e3e,
+        #c53030,
+        #9b2c2c,
+        #742a2a,
+    ),
+    "green": (
+        #f0fff4,
+        #c6f6d5,
+        #9ae6b4,
+        #68d391,
+        #48bb78,
+        #38a169,
+        #2f855a,
+        #276749,
+        #22543d,
+    ),
+    "blue": (
+        #f0f7ff,
+        #bddcff,
+        #8ac0ff,
+        #52a3ff,
+        #1f87ff,
+        #006deb,
+        #0056b8,
+        #003b80,
+        #00244d,
+    ),
+    "yellow": (
+        #fffff0,
+        #fefcbf,
+        #faf089,
+        #f6e05e,
+        #ecc94b,
+        #d69e2e,
+        #b7791f,
+        #975a16,
+        #744210,
+    ),
+    "default": (
+        #f0f7ff,
+        #bddcff,
+        #8ac0ff,
+        #52a3ff,
+        #1f87ff,
+        #006deb,
+        #0056b8,
+        #003b80,
+        #00244d,
+    ),
+    "alt": (
+        #fffaf0,
+        #feebc8,
+        #fbd38d,
+        #f6ad55,
+        #ed8936,
+        #dd6b20,
+        #c05621,
+        #9c4221,
+        #7b341e,
+    ),
+);
+
+$font-weight-values: (
+    "1": 100,
+    "2": 200,
+    "3": 300,
+    "4": 400,
+    "5": 500,
+    "6": 600,
+    "7": 700,
+    "8": 800,
+    "9": 900,
+);
+
+$line-height-values: (
+    "xxs": 20px,
+    "xs": 22px,
+    "s": 25px,
+    "m": 30px,
+    "l": 35px,
+    "xl": 50px,
+    "xxl": 65px,
+);
+
+$text-align-values: (
+    "left": left,
+    "center": center,
+    "right": right,
+    "justify": justify,
+);
+
+$font-family-values: (
+    "arial": arial,
+    "sans-serif": sans-serif,
+    "serif": serif,
+    "monospace": monospace,
+    "cursive": cursive,
+    "fantasy": fantasy,
+);
+
+$display-values: (
+    "block": block,
+    "inline-block": inline-block,
+    "inline": inline,
+    "flex": flex,
+    "grid": grid,
+    "none": none,
+);
+
+$rounded-values: (
+    "xxs": 2px,
+    "xs": 5px,
+    "s": 10px,
+    "m": 20px,
+    "l": 30px,
+    "xl": 50px,
+    "xxl": 50%,
+);
+
+$box-shadow-blur: 8px;
+$box-shadow-values: (
+    "center": 0px 0px $box-shadow-blur,
+    "top": 0px -15px $box-shadow-blur,
+    "left": -15px 0px $box-shadow-blur,
+    "right": 15px 0px $box-shadow-blur,
+    "bottom": 0px 15px $box-shadow-blur,
+);

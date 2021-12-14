@@ -1,0 +1,17 @@
+@each $d-size, $d-value in $breakpoint-values {
+  @if #{$d-size} == '' {
+    @each $key in getRoundedKeys() {
+      .g--rounded-#{$key} {
+        @include border-radius(getRoundedValue($key));
+      }
+    }
+  } @else {
+    @media screen and (min-width: #{$d-value}) {
+      @each $key in getRoundedKeys() {
+        .g--rounded-#{$key}#{$d-size} {
+          @include border-radius(getRoundedValue($key));
+        }
+      }
+    }
+  }
+}

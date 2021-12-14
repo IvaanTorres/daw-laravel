@@ -1,0 +1,28 @@
+.c-navbar {
+    background-color: getColor("grey", 9);
+    width: 100%;
+    padding: getPadding("m");
+    display: getDisplay("flex");
+
+    &__logo {
+        font-size: getFontSize("l");
+        color: getColor("white", 7);
+        margin-right: getMargin("m");
+    }
+
+    &__list {
+        display: getDisplay("flex");
+        gap: getGap("m");
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        color: getColor("grey", 6);
+        font-weight: getFontWeight("m");
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,17 @@
+@each $d-size, $d-value in $breakpoint-values {
+  @if #{$d-size} == '' {
+    @each $key in getFontSizeKeys() {
+      .g--font-size-#{$key} {
+        font-size: getFontSize($key);
+      }
+    }
+  } @else {
+    @media screen and (min-width: #{$d-value}) {
+      @each $key in getFontSizeKeys() {
+        .g--font-size-#{$key}#{$d-size} {
+          font-size: getFontSize($key);
+        }
+      }
+    }
+  }
+}
