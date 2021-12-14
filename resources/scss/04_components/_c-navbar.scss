@@ -24,5 +24,9 @@
         color: getColor("grey", 6);
         font-weight: getFontWeight("m");
         text-decoration: none;
+
+        &--active {
+            color: getColor("white", 7);
+        }
     }
 }

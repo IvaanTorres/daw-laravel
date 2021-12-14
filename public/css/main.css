@@ -873,6 +873,9 @@ template {
   color: #7d7d7d;
   text-decoration: none;
 }
+.c-navbar__link--active {
+  color: #f0f0f0;
+}
 
 .c-panel__title {
   font-size: 20px;
