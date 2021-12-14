@@ -13,35 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//! Path root
-Route::get('/', function () {
-    $name = 'Iván';
-    //* Ways to render a view
-    //return view('home')->with('nombre', $name);
-    //return view('home')->with(['nombre' => $name]);
-    //return view('home', ['nombre' => $name]);
-    return view('home', compact('name')); //* It must have the same value (local & view variable)
-});
-//! Path with params
-Route::get('saludo/{nombre}', function($nombre) {
-    return "Hola, " . $nombre;
-});
-//! Path with optional params
-Route::get('despedirse/{nombre?}', function($nombre = 'invitado') {
-    return "Adios, " . $nombre;
-})->where('nombre', '[A-Za-z]+'); //* If it doesn't match the param with the Regex, it shows a 404 error.
-//! Path with a name reference
-Route::get('contacto', function() {
-    return "Página de contacto";
-})->name('contact-path'); //* <a href="{{ route('ruta_contacto') }}">Contacto</a> --- It's not necessary an echo
-
-/* IMPORTANT: YOU CAN CONCAT SEVERAL FUNCTIONS */
-
-//* How to render a view when you don't have much logic.
-Route::view('/about', 'about', ['name' => 'Nacho']);
-
-//! Path to view which list values with a foreach
-Route::get('/support/{id?}', function($id = 0) { //* Number params are set automatically
-    return view('support', ['id' => $id]);
+Route::get('/posts}', function() {
+    return "Listado de posts";
 });
 
