@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class PostController extends Controller
     public function index() //getAll()
     {
         $posts = DB::table('posts')
-        ->orderBy('titulo', 'asc')
+        ->orderBy('title', 'asc')
         ->paginate(5); //Si usas paginate() no es necesario usar get()
         return view('posts.index', compact('posts'));
     }
@@ -52,7 +53,8 @@ class PostController extends Controller
     public function show($id) //getById()
     {
         $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
+        $comments = Comment::where('post_id', $post->id)->orderBy('created_at')->get();
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 
     /**
@@ -96,7 +98,7 @@ class PostController extends Controller
     public function nuevoPrueba(){
         $ran= rand();
         $newPost = new Post();
-        $newPost->titulo = "Titulo $ran";
+        $newPost->title = "Titulo $ran";
         $newPost->body = "Contenido $ran";
         $newPost->save();
         return redirect('/', 302);
@@ -105,7 +107,7 @@ class PostController extends Controller
     public function editarPrueba($id){
         $ran= rand();
         $modifiedPost = Post::findOrFail($id);
-        $modifiedPost->titulo="Titulo $ran";
+        $modifiedPost->title="Titulo $ran";
         $modifiedPost->body="Contenido $ran";
         $modifiedPost->save();
         return redirect('/', 302);

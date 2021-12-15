@@ -4,9 +4,10 @@
 @section('contenido')
     <h1>Listado de posts</h1>
 
-    @foreach ($posts as $post)
+    @forelse ($posts as $post)
         <div>
-            <h1>{{$post->titulo}}</h1>
+            <h1>{{$post->title}}</h1>
+            {{-- <p>{{$post->user->login}}</p> --}}
             <div><a href='{{url("/posts/$post->id")}}'>Ver detalles</a></div>
             <form action='{{ url("/posts/$post->id") }}' method="POST">
                 @method('DELETE')
@@ -14,5 +15,7 @@
                 <input type="submit" value="Eliminar">
             </form>
         </div>
-    @endforeach
+    @empty
+        <p>No hay posts</p>
+    @endforelse
 @endsection
