@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -11,9 +14,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //getAll()
     {
-        return view('posts.index');
+        $posts = DB::table('posts')
+        ->orderBy('titulo', 'asc')
+        ->paginate(5); //Si usas paginate() no es necesario usar get()
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -32,7 +38,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) //insert()
     {
         //
     }
@@ -43,9 +49,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //getById()
     {
-        return view('posts.show', compact('id'));
+        $post = Post::findOrFail($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -54,7 +61,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) //Formulario de editar
     {
         return redirect('/', 302);
     }
@@ -66,7 +73,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) //edit()
     {
         //
     }
@@ -77,8 +84,30 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) //del()
     {
-        //
+        $deletedPost = Post::findOrFail($id)->delete();
+        return PostController::index();
+    }
+
+    /* ----------------------------------- -- ----------------------------------- */
+    //Métodos de prueba para insertar y editar posts aleatorios
+
+    public function nuevoPrueba(){
+        $ran= rand();
+        $newPost = new Post();
+        $newPost->titulo = "Titulo $ran";
+        $newPost->body = "Contenido $ran";
+        $newPost->save();
+        return redirect('/', 302);
+    }
+
+    public function editarPrueba($id){
+        $ran= rand();
+        $modifiedPost = Post::findOrFail($id);
+        $modifiedPost->titulo="Titulo $ran";
+        $modifiedPost->body="Contenido $ran";
+        $modifiedPost->save();
+        return redirect('/', 302);
     }
 }
