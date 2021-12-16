@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -18,8 +20,9 @@ class PostController extends Controller
     public function index() //getAll()
     {
         $posts = DB::table('posts')
-        ->orderBy('title', 'asc')
+        ->orderBy('created_at', 'desc')
         ->paginate(5); //Si usas paginate() no es necesario usar get()
+        //? PREGUNTAR COMO HACER LOS BOTONES DE PAGINACION
         return view('posts.index', compact('posts'));
     }
 
@@ -30,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return redirect('/', 302);
+        return view('posts.create');
     }
 
     /**
@@ -39,9 +42,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //insert()
+    public function store(PostRequest $request) //insert()
     {
-        //
+        $newPost = new Post();
+        $newPost->title = $request->get('title');
+        $newPost->body = $request->get('body');
+        $newPost->user()->associate(User::where('login',  $request->get('user'))->get()[0]->id); //? PREGUNTAR
+        $newPost->save();
+        return redirect('/posts', 302);
     }
 
     /**
@@ -65,7 +73,8 @@ class PostController extends Controller
      */
     public function edit($id) //Formulario de editar
     {
-        return redirect('/', 302);
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -75,9 +84,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) //edit()
+    public function update(PostRequest $request, $id) //edit()
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->user()->associate(User::where('login',  $request->get('user'))->get()[0]->id); //? PREGUNTAR
+        $post->save();
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -88,8 +103,9 @@ class PostController extends Controller
      */
     public function destroy($id) //del()
     {
-        $deletedPost = Post::findOrFail($id)->delete();
-        return PostController::index();
+        Comment::where('post_id', $id)->delete();
+        Post::findOrFail($id)->delete();
+        return redirect('/posts', 302);
     }
 
     /* ----------------------------------- -- ----------------------------------- */

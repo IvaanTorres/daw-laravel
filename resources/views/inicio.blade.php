@@ -2,5 +2,5 @@
 
 @section('titulo', 'Listado de libros')
 @section('contenido')
-    <h1>Heyy</h1>
+    <h1>Inicio</h1>
 @endsection
