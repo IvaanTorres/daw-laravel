@@ -1,0 +1,25 @@
+.c-form {
+    margin-left: getMargin("l");
+    width: 350px;
+
+    &__label {
+        width: 100%;
+        margin-top: getMargin("m");
+        margin-bottom: getMargin("s");
+        display: getDisplay("inline-block");
+        font-size: getFontSize("l");
+    }
+    &__input {
+        width: 100%;
+        padding: getPadding("xs");
+    }
+    &__textarea {
+        padding: getPadding("xs");
+        width: 100%;
+    }
+    &__error {
+        font-weight: getFontWeight("7");
+        margin-top: getMargin("xs");
+        color: getColor("red", 5);
+    }
+}

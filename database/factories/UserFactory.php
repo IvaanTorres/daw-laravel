@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    protected $model = User::class;
+    protected $model = User::class; //*Specify that it's a factory of the model of User
 
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'login' => $this->faker->name(),
-            'password' => $this->faker->word(), // password
+            'password' => $this->faker->word(),
         ];
     }
 

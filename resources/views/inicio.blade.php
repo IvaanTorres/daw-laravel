@@ -2,5 +2,7 @@
 
 @section('titulo', 'Listado de libros')
 @section('contenido')
-    <h1>Inicio</h1>
+    <div>
+        <h1 class="c-title g--text-align-center">Inicio</h1>
+    </div>
 @endsection

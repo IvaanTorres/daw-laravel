@@ -11,8 +11,12 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    public function user(){
+    public function user(){ //It must be named as the User class without the 's'
         return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }

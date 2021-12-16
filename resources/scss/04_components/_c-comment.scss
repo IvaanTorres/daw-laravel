@@ -1,0 +1,14 @@
+.c-comment {
+    margin-bottom: getMargin("m");
+
+    &__body {
+        padding-bottom: getPadding("xs");
+        border: 1px solid getColor("grey", 4);
+        padding: getPadding("m");
+    }
+    &__user {
+        background-color: getColor("grey", 2);
+        border: 1px solid getColor("grey", 4);
+        padding: getPadding("m");
+    }
+}

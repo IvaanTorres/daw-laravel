@@ -16,6 +16,6 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(3)->create(); //Calls the factory of User (It creates 3 instances/rows)
+        User::factory()->count(3)->create(); //* Calls the factory of User (It creates 3 instances/rows)
     }
 }

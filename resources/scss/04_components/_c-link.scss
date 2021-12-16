@@ -1,0 +1,23 @@
+.c-link {
+    padding: getPadding("s");
+    text-decoration: none;
+    background-color: getColor("grey", 6);
+    color: black;
+    font-weight: getFontWeight("7");
+    cursor: pointer;
+    border: 0px;
+    transition: 0.5s;
+
+    &:hover {
+        background-color: getColor("grey", 7);
+    }
+
+    &--alternative {
+        background-color: getColor("white", 5);
+        border: 1px solid getColor("grey", 7);
+    }
+
+    &--danger {
+        background-color: getColor("red", 5);
+    }
+}

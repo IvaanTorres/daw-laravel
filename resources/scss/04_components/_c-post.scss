@@ -1,0 +1,19 @@
+.c-post {
+    margin-bottom: getMargin("l");
+    padding-bottom: getPadding("xs");
+    border-bottom: 1px solid getColor("black", 1);
+
+    &__title {
+        margin-bottom: getMargin("s");
+        font-size: getFontSize("2xl");
+    }
+    &__body {
+        margin-bottom: getMargin("l");
+    }
+    &__createdAt {
+        margin-bottom: getMargin("xs");
+    }
+    &__user {
+        margin-bottom: getMargin("s");
+    }
+}

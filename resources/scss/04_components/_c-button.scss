@@ -1,29 +1,13 @@
 .c-button {
-  padding: 10px 20px;
-  background-color: lightblue;
-  border: 0px;
-  cursor: pointer;
-  color: black;
-  transition: all ease 0.5s;
-  @include box-shadow(getBoxShadowPosition('center'));
-  font-size: getFontSize('m');
-  @include border-radius(getBorderRadiusValue('xs'));
+    background-color: getColor("grey", 6);
+    border: 0px;
+    padding: getPadding("s") getPadding("xl");
+    margin-top: getMargin("s");
+    cursor: pointer;
+    font-weight: getFontWeight("7");
+    transition: 0.5s;
 
-  &:hover {
-    background-color: rgb(98, 201, 235);
-  }
-
-  @each $d-size, $d-value in $breakpoint-values {
-    @if #{$d-size} == '' {
-      &--big {
-        background-color: red;
-      }
-    } @else {
-      @media screen and (min-width: #{$d-value}) {
-        &--big#{$d-size} {
-          background-color: red;
-        }
-      }
+    &:hover {
+        background-color: getColor("grey", 8);
     }
-  }
 }

@@ -7,6 +7,12 @@
     <title>@yield('titulo')</title>
     {{-- ADD CSS TO BLADE --}}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" >
+
+    <style>
+        *{
+            font-family: 'Sora', sans-serif;
+        }
+    </style>
 </head>
 <body>
     {{-- NAV --}}
