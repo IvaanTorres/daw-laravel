@@ -10,6 +10,7 @@
 
     &:hover {
         background-color: getColor("grey", 7);
+        color: getColor("white", 4);
     }
 
     &--alternative {
