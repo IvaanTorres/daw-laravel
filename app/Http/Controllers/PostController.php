@@ -12,6 +12,12 @@ use App\Models\User;
 
 class PostController extends Controller
 {
+    //! De esta manera podemos restringir que métodos utilizar.
+    //! En este caso, todos los métodos solo son accesibles por admin.
+    function __construct(){
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

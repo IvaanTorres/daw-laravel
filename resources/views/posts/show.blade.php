@@ -11,12 +11,14 @@
             <p class="c-post__createdAt">Created: {{$post->created_at}}</p>
             <p class="c-post__user">User: {{$post->user->login}}</p>
 
-            <a class="c-link c-link--alternative" href='{{route("posts.edit", $post->id)}}'>Update</a>
-            <form class="g--display-inline-block" action="{{route('posts.destroy', $post->id)}}" method="post">
-                @csrf
-                @method('DELETE')
-                <input class="c-link c-link--danger" type="submit" value="Delete">
-            </form>
+            @if (auth()->check())
+                <a class="c-link c-link--alternative" href='{{route("posts.edit", $post->id)}}'>Update</a>
+                <form class="g--display-inline-block" action="{{route('posts.destroy', $post->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input class="c-link c-link--danger" type="submit" value="Delete">
+                </form>
+            @endif
             {{-- <form action="{{route('posts.edit', $post->id)}}" method="get">
                 @csrf
                 <input class="c-button" type="submit" value="Update post">

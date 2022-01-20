@@ -17,9 +17,10 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $login = $this->faker->name();
         return [
-            'login' => $this->faker->name(),
-            'password' => $this->faker->word(),
+            'login' => $login,
+            'password' => bcrypt($login),
         ];
     }
 
