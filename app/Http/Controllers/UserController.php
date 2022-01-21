@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    /* function __construct(){
+        $this->middleware(['auth', 'roles:admin']);
+    } */
+
     public function showForm(){
         return view("login");
     }

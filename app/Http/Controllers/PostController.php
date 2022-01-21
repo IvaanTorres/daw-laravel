@@ -25,9 +25,9 @@ class PostController extends Controller
      */
     public function index() //getAll()
     {
-        $posts = DB::table('posts')
-        ->orderBy('created_at', 'desc')
-        ->paginate(5); //Si usas paginate() no es necesario usar get()
+        $posts = Post::with('user')->paginate(5);
+        /* ->orderBy('created_at', 'desc')
+        ->paginate(5); //Si usas paginate() no es necesario usar get() */
         //? PREGUNTAR COMO HACER LOS BOTONES DE PAGINACION
         return view('posts.index', compact('posts'));
     }

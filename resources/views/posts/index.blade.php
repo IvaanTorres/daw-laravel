@@ -17,7 +17,7 @@
         @forelse ($posts as $post)
             <div class="c-post">
                 <h2 class="c-post__title">{{$post->title}}</h2>
-                {{-- <p>{{$post->user->login}}</p> --}}
+                <p>{{$post->user->login}}</p>
                 <a class="c-link" href='{{url("/posts/$post->id")}}'>Details</a>
                 @if (auth()->check())
                 {{-- PREGUNTAR COMO HACER QUE EL USUARIO PUEDA EDITAR/BORRAR SOLO SUS PROPIOS POSTS --}}
