@@ -1,4 +1,5 @@
 .c-link {
+    display: inline-block;
     padding: getPadding("s");
     text-decoration: none;
     background-color: getColor("grey", 6);

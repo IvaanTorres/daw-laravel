@@ -18,13 +18,10 @@
             <div class="c-post">
                 <h2 class="c-post__title">{{$post->title}}</h2>
                 <p>{{$post->user->login}}</p>
-                <a class="c-link" href='{{url("/posts/$post->id")}}'>Details</a>
-                @if (auth()->check())
-                {{-- PREGUNTAR COMO HACER QUE EL USUARIO PUEDA EDITAR/BORRAR SOLO SUS PROPIOS POSTS --}}
-                {{-- <p>{{auth()->user()->login}}</p>
-                <p>{{$post->login}}</p> --}}
+                <a class="c-link g--margin-top-m" href='{{url("/posts/$post->id")}}'>Details</a>
+                @if (auth()->check() && (auth()->user()->role === "admin" || auth()->user()->login === $post->user->login))
                     <a class="c-link c-link--alternative" href='{{route("posts.edit", $post->id)}}'>Update</a>
-                    <form class=" g--margin-top-m g--margin-bottom-l g--display-inline-block" action='{{ url("/posts/$post->id") }}' method="POST">
+                    <form class=" g--display-inline-block" action='{{ url("/posts/$post->id") }}' method="POST">
                         @method('DELETE')
                         @csrf
                         <input class="c-link c-link--danger" type="submit" value="Delete">

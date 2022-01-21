@@ -13,9 +13,9 @@ use App\Models\User;
 class PostController extends Controller
 {
     //! De esta manera podemos restringir que métodos utilizar.
-    //! En este caso, todos los métodos solo son accesibles por admin.
     function __construct(){
-        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+        $this->middleware('auth', ['only' => ['create', "store"]]); //Para usuarios normales loggeados
+        $this->middleware('roles', ['only' => ["update", "edit", "destroy"]]); //Para usuarios loggeados admin o que han creado el post
     }
 
     /**
@@ -26,9 +26,6 @@ class PostController extends Controller
     public function index() //getAll()
     {
         $posts = Post::with('user')->paginate(5);
-        /* ->orderBy('created_at', 'desc')
-        ->paginate(5); //Si usas paginate() no es necesario usar get() */
-        //? PREGUNTAR COMO HACER LOS BOTONES DE PAGINACION
         return view('posts.index', compact('posts'));
     }
 

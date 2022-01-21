@@ -11,7 +11,7 @@
             <p class="c-post__createdAt">Created: {{$post->created_at}}</p>
             <p class="c-post__user">User: {{$post->user->login}}</p>
 
-            @if (auth()->check())
+            @if (auth()->check() && (auth()->user()->role === "admin" || auth()->user()->login === $post->user->login))
                 <a class="c-link c-link--alternative" href='{{route("posts.edit", $post->id)}}'>Update</a>
                 <form class="g--display-inline-block" action="{{route('posts.destroy', $post->id)}}" method="post">
                     @csrf

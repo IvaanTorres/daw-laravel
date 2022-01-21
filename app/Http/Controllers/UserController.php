@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /* function __construct(){
-        $this->middleware(['auth', 'roles:admin']);
+        $this->middleware('auth', ['only' => ['destroy']]);
+        $this->middleware('roles:admin', ['only' => ['create']]);
+        $this->middleware(['auth', 'roles:1']);
     } */
 
     public function showForm(){
