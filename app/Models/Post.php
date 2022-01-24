@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $table = 'posts';
+    protected $hidden = ['created_at', 'updated_at']; //! Estos campos no se envian en el JSON al cliente
 
     public function user(){ //It must be named as the User class without the 's'
         return $this->belongsTo(User::class);

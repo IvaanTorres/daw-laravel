@@ -24,18 +24,22 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5',
+            /* 'title' => 'required|min:5',
             'body' => 'required|min:50',
-            'user' => 'required'
+            'user' => 'required' */
+            'title' => 'required|min:5',
+            'body' => 'required|min:50'
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => 'El título es obligatorio',
+            /* 'title.required' => 'El título es obligatorio',
             'body.required' => 'El contenido es obligatorio',
-            'user.required' => 'El usuario es obligatorio'
+            'user.required' => 'El usuario es obligatorio' */
+            'title.required' => 'El título es obligatorio',
+            'body.required' => 'El contenido es obligatorio'
         ];
     }
 }

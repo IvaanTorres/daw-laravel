@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Dotenv\Exception\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -35,7 +37,15 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if (request()->is('api*')){
+                if ($e instanceof ModelNotFoundException){
+                    return response()->json(['error' => 'Recurso no encontrado'], 404);
+                } else if ($e instanceof ValidationException){
+                    return response()->json(['error' => 'Datos no válidos'], 400);
+                } else if (isset($e)){
+                    return response()->json(['error' => 'Error: ' . $e->getMessage()], 500);
+                }
+            }
         });
     }
 }
