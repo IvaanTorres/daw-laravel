@@ -36,7 +36,9 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        //! ->reportable() : Salta un error sin tratar (HTML).
+        //! ->renderable() : Trata el error sin ningún problema.
+        $this->renderable(function (Throwable $e) {
             if (request()->is('api*')){
                 if ($e instanceof ModelNotFoundException){
                     return response()->json(['error' => 'Recurso no encontrado'], 404);
